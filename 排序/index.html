@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script type="text/javascript">
+    window.onload = function () {
+        let arr = [2, 4, 4, 745, 64, 23, 1, 2134, 0]
+
+        //冒泡排序  每次比较前后两个值
+        // let mpFunSort = (data)=>{
+        //     if(!data || data&&data.length==0)return
+
+        //     for(let i = 0 ; i< data.length-1 ; i++){ //控制循环几轮
+        //         for(let j = 0;j < data.length-1-i; j++){
+        //             if(data[j] > data[j+1]){
+        //                 // let tmp = data[j+1]
+        //                 // data[j+1] = data[j]
+        //                 // data[j] = tmp
+        //                 [data[j+1], data[j]]=[data[j],data[j+1]]
+        //             }
+        //         }
+        //     }
+        // }
+        //选择排序  依次选出最小的到最大的
+        // let selectMinSort = (data) => {
+        //     if (!data || data && data.length == 0) return
+
+        //     for (let i = 0; i < data.length - 1; i++) {
+        //         for(let j = i;j<data.length; j++){
+        //             if(data[i] > data[j]){
+        //                 [data[i],data[j]]=[data[j],data[i]]
+        //             }
+        //         }
+        //     }
+        // }
+        // mpFunSort(arr)
+        // selectMinSort(arr)
+        //插排
+        // let insertSort=(data)=>{
+        //     if (!data || data && data.length == 0) return
+
+        //     for(let i =1;i<data.length;i++){
+        //         for(let j = i; j > 0; j--){
+        //             if(data[j] < data[j-1]){
+        //                 [data[j],data[j-1]]=[data[j-1],data[j]]
+        //             }
+        //         }
+        //     }
+        // }
+        // insertSort(arr)
+        //快速排序
+        // let quickSort=(data)=>{
+        //     if (!data || data && data.length == 0) return []
+        //     if(data.length<=1)return data
+
+        //     let  left =[],right=[];
+        //     let current = data.splice(0,1);
+
+        //     for(let i=0;i<data.length;i++){
+        //         if(data[i]<current){
+        //             left.push(data[i])
+        //         }else{
+        //             right.push(data[i])
+        //         }
+        //     }
+        //     return  quickSort(left).concat(current,quickSort(right))
+        // }
+        // arr=quickSort(arr)
+        console.log(arr)
+    }
+</script>
+
+</html>

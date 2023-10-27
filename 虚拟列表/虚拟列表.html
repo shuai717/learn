@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,body{
+            padding: 0;
+            margin: 0;
+        }
+        .wrap{
+            padding:0;
+            margin:20px auto 0px;
+            width:400px;
+            height:80vh;
+            overflow-x: hidden;
+            overflow-y: auto;
+            position:relative;
+            border: 1px solid blue;
+        }
+        .item{
+            width:100%;
+            height:80px;
+            border:1px solid black;
+        }
+        .scroll{
+            width: 1px;
+            height: 0px;
+        }
+        .content{
+            width:100%;
+            height:100%;
+            position:absolute;
+            left:0;
+            top:0;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="scroll"></div>
+        <div class="content">
+        </div>
+    </div>
+</body>
+<script>
+    window.onload=()=>{
+        let wrap = document.querySelector('.wrap');
+        let content = document.querySelector('.content');
+        let scroll = document.querySelector('.scroll');
+        let arr=[],viewArr=[]
+        for( let i =0 ; i<100 ; i++ ){
+            arr.push(i)
+        }
+        
+        let wrapHieght=wrap.clientHeight;
+        let viewMaxNumber=Math.ceil(wrapHieght/80)
+
+        scroll.style.height=arr.length*80 +'px';
+        for(let i =0;i<(viewMaxNumber);i++){
+            let item =document.createElement('div');
+            item.className='item'
+            item.innerText=i
+            item.key=i
+            content.appendChild(item)
+            viewArr.push(i)
+        }
+        let scrollTop=0
+        wrap.addEventListener('scroll',(e)=>{
+            let isUpOrDown = scrollTop>wrap.scrollTop?"up":"down"
+            scrollTop = wrap.scrollTop;
+
+            let topNum=Math.floor(scrollTop/80);
+            let maxNum = viewMaxNumber+topNum
+            if(maxNum>99)maxNum=100
+
+            viewArr=arr.slice(topNum,maxNum)
+            let itemList = document.querySelectorAll('.item')
+            itemList.forEach((node)=>{
+                if(!viewArr.includes(node.key)){
+                    content.style.paddingTop=topNum*80+"px"
+                    content.removeChild(node)
+                }
+            })
+            viewArr.forEach((item)=>{
+                let flag=false
+                itemList.forEach((node)=>{
+                    if(node.key == item)flag=true
+                })
+                if(!flag){
+                    let node =document.createElement('div');
+                    node.className='item'
+                    node.innerText=item
+                    node.key=item
+                    if(isUpOrDown == 'up'){
+                        content.prepend(node)
+                    }else{
+                        content.append(node)
+                    }
+                    
+                }
+            })
+        })
+    }
+</script>
+</html>
